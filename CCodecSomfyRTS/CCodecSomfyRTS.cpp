@@ -318,7 +318,7 @@ void CCodecSomfyRTS::Down(RemoteControl remotecontrol) {
 void CCodecSomfyRTS::MyStop(RemoteControl remotecontrol) {
         _remotecontrol = remotecontrol;
         _RefreshRollingCode();
-
+        
         transmit(0x01, 2);
         int pmax=2;
         for(int p=0; p<pmax;++p) {
@@ -328,6 +328,32 @@ void CCodecSomfyRTS::MyStop(RemoteControl remotecontrol) {
         Serial.println("MyStop");
 }
 
+
+void CCodecSomfyRTS::UpStop(RemoteControl remotecontrol) {
+        _remotecontrol = remotecontrol;
+        _RefreshRollingCode();
+
+        transmit(0x03, 2);
+        int pmax=2;
+        for(int p=0; p<pmax;++p) {
+            transmit(0x03, 7);
+        }
+
+        Serial.println("MyStop");
+}
+
+void CCodecSomfyRTS::DownStop(RemoteControl remotecontrol) {
+        _remotecontrol = remotecontrol;
+        _RefreshRollingCode();
+
+        transmit(0x05, 2);
+        int pmax=2;
+        for(int p=0; p<pmax;++p) {
+            transmit(0x05, 7);
+        }
+
+        Serial.println("MyStop");
+}
 
 void CCodecSomfyRTS::Gate(RemoteControl remotecontrol,byte button) {
 

@@ -65,6 +65,8 @@ class CCodecSomfyRTS {
     void init(byte, byte);
     void Up(RemoteControl);
     void Down(RemoteControl);
+    void UpStop(RemoteControl);
+    void DownStop(RemoteControl);
     void MyStop(RemoteControl);
     void Gate(RemoteControl, byte);
     void AddProg(RemoteControl);
