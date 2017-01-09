@@ -13,8 +13,6 @@
 #define CCodecSomfyRTS_h
 
 #include "EEPROM.h"
-#include <Ethernet.h>
-#include <EthernetUdp.h>
 
 #if ARDUINO >= 100
     #include "Arduino.h"
@@ -60,8 +58,6 @@ class CCodecSomfyRTS {
 
   public:
     CCodecSomfyRTS(byte PORT_TX);
-    CCodecSomfyRTS(byte PORT_TX, RemoteName, RemoteControl*, UdpPassWord);
-    CCodecSomfyRTS(byte PORT_TX, RemoteName, RemoteControl*, UdpPassWord, int);
     void init(byte, byte);
     void Up(RemoteControl);
     void Down(RemoteControl);
@@ -72,16 +68,12 @@ class CCodecSomfyRTS {
     void AddProg(RemoteControl);
     void RemoveProg(RemoteControl);
     void GetRC();
-    void CheckAndroid(EthernetUDP);
     void CheckProg(byte, byte);
     void CheckProg(byte, byte, byte);
 
   protected:
     t_status _CheckPulse(word p);
     t_status _status;
-    char* _remotename;
-    char* _UdpPassWord;
-    RemoteControl* _remotecontrol_all;
     uint8_t* _remotecontrol;
     byte _cpt_synchro_hw;
     byte _cpt_bits;
@@ -92,7 +84,6 @@ class CCodecSomfyRTS {
     byte _PORT_RX;
     void _RefreshRollingCode();
     unsigned long _rolling_code;
-    char _packetBuffer[ UDP_SOMFY_TX_PACKET_MAX_SIZE ];
     int _AddressProg;
     byte _LastHour;
 
